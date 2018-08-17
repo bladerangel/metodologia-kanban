@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "rest-api": "json-server --watch src/app/DadosRest/dados.json"
+    "rest-api": "json-server --watch dadosRest/dados.json"
   },
   "private": true,
   "dependencies": {
