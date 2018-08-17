@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+
 import { Quadro } from '../../modelos/quadro';
+import { EventosService } from '../../servicos/eventos.service';
 
 @Component({
   selector: 'app-quadro',
@@ -8,11 +10,23 @@ import { Quadro } from '../../modelos/quadro';
 })
 export class QuadroComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private eventosService: EventosService
+  ) { }
 
   @Input() quadro: Quadro;
+  @Output() eventoRemoverQuadro = new EventEmitter();
 
   ngOnInit() {
+  }
+
+  removerQuadro() {
+    this.eventoRemoverQuadro.emit(this.quadro.id);
+
+  }
+
+  abrirModal() {
+    this.eventosService.get('abrirModal').emit({ modo: 'edicao', quadro: this.quadro });
   }
 
 }

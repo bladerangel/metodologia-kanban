@@ -2,15 +2,15 @@
   <div class="card">
     <h3>{{quadro.nome}}</h3>
     <div class="tooltip">
-      <a [routerLink]="['/quadro-detalhe', quadro.nome]"><button class="btn success"><i class="fa fa-eye"></i></button></a>
+      <a [routerLink]="['/quadro-detalhe', quadro.id]"><button class="btn success"><i class="fa fa-eye"></i></button></a>
       <span class="tooltiptext">Ver Quadro</span>
     </div>
     <div class="tooltip">
-      <a href=""><button class="btn info"><i class="fa fa-pencil"></i></button></a>
-      <span class="tooltiptext">Editar Quadro</span>
+      <button (click)="abrirModal()" class="btn info"><i class="fa fa-pencil"></i></button>
+      <span class="tooltiptext">Renomear Quadro</span>
     </div>
     <div class="tooltip">
-      <a href=""><button class="btn danger"><i class="fa fa-trash"></i></button></a>
+      <button (click)="removerQuadro()" class="btn danger"><i class="fa fa-trash"></i></button>
       <span class="tooltiptext">Deletar Quadro</span>
     </div>
   </div>

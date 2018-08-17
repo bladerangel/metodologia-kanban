@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Quadro } from '../modelos/quadro';
 
 @Injectable({
@@ -15,5 +15,17 @@ export class QuadroService {
 
   getQuadros() {
     return this.httpClient.get<Quadro[]>(this.url + 'quadros');
+  }
+
+  salvarQuadro(quadro: Quadro) {
+    return this.httpClient.post<Quadro>(this.url + 'quadros', quadro);
+  }
+
+  removerQuadro(id: number) {
+    return this.httpClient.delete(this.url + 'quadros/' + id);
+  }
+
+  renomearQuadro(quadro: Quadro) {
+    return this.httpClient.put<Quadro>(this.url + 'quadros/' + quadro.id, quadro);
   }
 }

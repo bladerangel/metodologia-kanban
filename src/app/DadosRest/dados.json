@@ -1,7 +1,0 @@
-{
-    "quadros":
-    [
-        {"nome" : "Pagina Principal", "listas": [{"nome": "Desenvolver Layout", "atividades": [{"nome": "Criar Menu", "descricao": "Utilizar listas"}]}]},
-        {"nome" : "quadro2"}
-    ]
-}
