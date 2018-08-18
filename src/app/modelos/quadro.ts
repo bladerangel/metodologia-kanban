@@ -1,11 +1,10 @@
-import { Lista } from "./lista";
+import { Lista, ListaObrigatoria } from "./lista";
 
 export class Quadro {
 
     constructor(
         public id: number,
-        public nome: string,
-        public listas: Lista[]
-    ) { }
+        public nome: string
+    ) {}
 }
 

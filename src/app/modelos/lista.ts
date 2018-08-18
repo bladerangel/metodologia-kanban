@@ -3,13 +3,14 @@ import { Atividade } from "./atividade";
 export class Lista {
 
     constructor(
-        private nome: string,
-        private atividades: Atividade[]
+        public id: number,
+        public nome: string,
+        public quadroId: number
     ) { }
 }
 
-enum ListaObrigatoria {
-    Fazer,
-    Fazendo,
-    Feito
+export enum ListaObrigatoria {
+    Fazer = "Fazer",
+    Fazendo = "Fazendo",
+    Feito = "Feito"
 }

@@ -1,7 +1,10 @@
 export class Atividade {
 
     constructor(
-        private titulo: string,
-        private descricao: string
+        public id: number,
+        public titulo: string,
+        public descricao: string,
+        public quadroId: number,
+        public listaId: number,
     ) { }
 }
