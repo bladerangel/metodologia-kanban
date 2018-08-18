@@ -10,6 +10,8 @@ import { CabecalhoComponent } from './componentes/compartilhados/cabecalho/cabec
 import { QuadroComponent } from './componentes/quadro/quadro.component';
 import { QuadroDetalheComponent } from './componentes/quadro-detalhe/quadro-detalhe.component';
 import { CaixaModalComponent } from './componentes/compartilhados/caixa-modal/caixa-modal.component';
+import { ListaComponent } from './componentes/lista/lista.component';
+import { AtividadeComponent } from './componentes/atividade/atividade.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { CaixaModalComponent } from './componentes/compartilhados/caixa-modal/ca
     CabecalhoComponent,
     QuadroComponent,
     QuadroDetalheComponent,
-    CaixaModalComponent
+    CaixaModalComponent,
+    ListaComponent,
+    AtividadeComponent
   ],
   imports: [
     BrowserModule,
