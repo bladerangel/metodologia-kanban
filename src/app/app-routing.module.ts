@@ -6,7 +6,7 @@ import { QuadrosComponent } from './componentes/quadros/quadros.component';
 
 const routes: Routes = [
   {path: '', component: QuadrosComponent},
-  {path: 'quadro-detalhe/:nome', component: QuadroDetalheComponent}
+  {path: 'quadro-detalhe/:id', component: QuadroDetalheComponent}
 ];
 
 @NgModule({
