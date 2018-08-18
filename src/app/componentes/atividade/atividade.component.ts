@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Atividade } from '../../modelos/atividade';
+import { AtividadeService } from '../../servicos/atividade.service';
 
 @Component({
   selector: 'app-atividade',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtividadeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private atividadeService: AtividadeService
+  ) { }
+  @Input() atividade: Atividade;
+  @Output() eventoRemoverAtividade = new EventEmitter();
 
   ngOnInit() {
+
   }
 
+  removerAtividade() {
+    this.atividadeService.removerAtividade(this.atividade.id).subscribe(() => this.eventoRemoverAtividade.emit());
+  }
 }
