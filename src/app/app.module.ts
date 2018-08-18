@@ -12,6 +12,7 @@ import { QuadroDetalheComponent } from './componentes/quadro-detalhe/quadro-deta
 import { CaixaModalComponent } from './componentes/compartilhados/caixa-modal/caixa-modal.component';
 import { ListaComponent } from './componentes/lista/lista.component';
 import { AtividadeComponent } from './componentes/atividade/atividade.component';
+import { NgDragDropModule } from 'ng-drag-drop';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AtividadeComponent } from './componentes/atividade/atividade.component'
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgDragDropModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
