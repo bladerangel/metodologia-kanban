@@ -17,6 +17,10 @@ export class QuadroService {
     return this.httpClient.get<Quadro[]>(this.url + 'quadros');
   }
 
+  getQuadro(id: number) {
+    return this.httpClient.get<Quadro>(this.url + 'quadros/' + id);
+  }
+
   salvarQuadro(quadro: Quadro) {
     return this.httpClient.post<Quadro>(this.url + 'quadros', quadro);
   }
