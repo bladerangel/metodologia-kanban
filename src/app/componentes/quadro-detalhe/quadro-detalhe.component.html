@@ -1,1 +1,1 @@
-<app-lista></app-lista>
+<app-lista *ngFor="let lista of listas" [lista]="lista" (eventoAtividadeMovida)="moverAtividade($event)"></app-lista>
