@@ -1,5 +1,3 @@
-import { Atividade } from "./atividade";
-
 export class Lista {
 
     constructor(

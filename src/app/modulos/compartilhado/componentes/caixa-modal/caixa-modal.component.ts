@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, Renderer2, Input } from '@angular/core';
-import { EventosService } from '../../../servicos/eventos.service';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+
+import { EventosService } from '../../servicos/eventos.service';
 
 @Component({
   selector: 'app-caixa-modal',

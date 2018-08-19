@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { QuadroService } from '../../servicos/quadro.service';
+import { ListaService } from '../../../lista/servicos/lista.service';
+import { EventosService } from '../../../compartilhado/servicos/eventos.service';
 import { Quadro } from '../../modelos/quadro';
-import { EventosService } from '../../servicos/eventos.service';
-import { ListaService } from '../../servicos/lista.service';
-import { Lista, ListaObrigatoria } from '../../modelos/lista';
+import { ListaObrigatoria, Lista } from '../../../lista/modelos/lista';
 
 @Component({
   selector: 'app-quadros',

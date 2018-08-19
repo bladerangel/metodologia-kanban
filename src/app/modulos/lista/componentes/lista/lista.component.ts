@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Atividade } from '../../modelos/atividade';
-import { ListaService } from '../../servicos/lista.service';
-import { AtividadeService } from '../../servicos/atividade.service';
+
+import { AtividadeService } from '../../../atividade/servicos/atividade.service';
 import { Lista } from '../../modelos/lista';
+import { Atividade } from '../../../atividade/modelos/atividade';
 
 @Component({
   selector: 'app-lista',

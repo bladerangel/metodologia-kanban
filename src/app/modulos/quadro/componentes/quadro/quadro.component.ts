@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
+import { EventosService } from '../../../compartilhado/servicos/eventos.service';
 import { Quadro } from '../../modelos/quadro';
-import { EventosService } from '../../servicos/eventos.service';
 
 @Component({
   selector: 'app-quadro',
