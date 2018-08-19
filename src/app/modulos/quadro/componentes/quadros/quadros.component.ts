@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { QuadroService } from '../../servicos/quadro.service';
 import { ListaService } from '../../../lista/servicos/lista.service';
-import { EventosService } from '../../../compartilhado/servicos/eventos.service';
+import { CaixaModalService } from '../../../compartilhado/caixa-modal/servicos/caixaModal.service';
 import { Quadro } from '../../modelos/quadro';
 import { ListaObrigatoria, Lista } from '../../../lista/modelos/lista';
 
@@ -15,39 +15,44 @@ export class QuadrosComponent implements OnInit {
 
   constructor(
     private quadroService: QuadroService,
-    private eventosService: EventosService,
+    private caixaModalService: CaixaModalService,
     private listaService: ListaService
   ) { }
 
   quadros: Quadro[];
 
   ngOnInit() {
-    this.atualizarQuadros();
+    this.quadroService.getQuadros()
+      .subscribe(quadros => this.quadros = quadros);
   }
 
-  abrirModal() {
-    this.eventosService.get('abrirModal').emit({ modo: 'criacao' });
+  adicionarQuadro() {
+    this.caixaModalService.emitirEvento({ modo: 'criacao', componente: 'quadro', formulario: {} });
   }
 
-  gerenciarQuadro($event: any) {
-    if ($event.modo == 'criacao')
-      this.quadroService.salvarQuadro(new Quadro(null, $event.nome)).subscribe(quadro => {
-        this.atualizarQuadros();
-        this.listaService.salvarLista(new Lista(null, ListaObrigatoria.Fazer, quadro.id)).subscribe();
-        this.listaService.salvarLista(new Lista(null, ListaObrigatoria.Fazendo, quadro.id)).subscribe();
-        this.listaService.salvarLista(new Lista(null, ListaObrigatoria.Feito, quadro.id)).subscribe();
-      });
+  gerenciarQuadro(dados: any) {
+    if (dados.modo == 'criacao') {
+      this.quadroService.salvarQuadro(new Quadro(null, dados.formulario.nome))
+        .subscribe(quadro => {
+          //inseri quadro sem precisar atualizar todos os quadros
+          this.quadros.push(quadro);
+          //ao salvar um quadro cria-se as listas obrigatorias
+          for (const lista in ListaObrigatoria) {
+            this.listaService.salvarLista(new Lista(null, lista, quadro.id)).subscribe();
+          }
+        });
+    }
+    else {
+      //edita nome do quadro
+      this.quadroService.renomearQuadro(dados.formulario).subscribe();
+    }
 
-    else
-      this.quadroService.renomearQuadro($event.quadro).subscribe(quadro => this.atualizarQuadros());
+
   }
 
   removerQuadro(id: number) {
-    this.quadroService.removerQuadro(id).subscribe(quadro => this.atualizarQuadros());
-  }
-
-  atualizarQuadros() {
-    this.quadroService.getQuadros()
-      .subscribe(quadros => this.quadros = quadros);
+    //remove quadro sem precisar atualizar todos os quadros
+    this.quadros.splice(this.quadros.findIndex((quadro) => quadro.id == id), 1);
+    this.quadroService.removerQuadro(id).subscribe();
   }
 }

@@ -1,10 +1,10 @@
 <div class="row">
   <app-quadro *ngFor="let quadro of quadros" [quadro]="quadro" (eventoRemoverQuadro)="removerQuadro($event)"></app-quadro>
   <div class="column">
-    <div class="card" (click)="abrirModal()">
+    <div class="card" (click)="adicionarQuadro()">
       <span><i class="fa fa-plus"></i>Adicionar Quadro</span>
     </div>
   </div>
 </div>
 
-<app-caixa-modal (getForm)="gerenciarQuadro($event)"></app-caixa-modal>
+<app-caixa-modal (eventoSubmeterFormulario)="gerenciarQuadro($event)"></app-caixa-modal>
