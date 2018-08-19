@@ -13,11 +13,15 @@ export class ListaService {
 
   url = 'http://localhost:3000/';
 
-  getLista(quadroId: number) {
+  getListas(quadroId: number) {
     return this.httpClient.get<Lista[]>(this.url + 'quadros/' + quadroId + '/listas');
   }
 
   salvarLista(lista: Lista) {
     return this.httpClient.post<Lista>(this.url + 'listas', lista);
+  }
+
+  removerLista(id: number) {
+    return this.httpClient.delete(this.url + 'listas/' + id);
   }
 }

@@ -1,5 +1,5 @@
 .drag-border {
-    border: #ff525b dashed 2px;
+    border: #ff525b dashed 2px !important;
 }
 
 .drag-handle {
@@ -18,15 +18,15 @@
 /* Droppable */
 
 .drag-hint-border {
-    border: #3c763d dashed 2px;
+    border: #3c763d dashed 2px !important;
 }
 
 .drag-over-border {
-    border: #fbbc05 dashed 2px;
+    border: #fbbc05 dashed 2px !important;
 }
 
 .drag-transit {
-    border: #3500FF dashed 2px;
+    border: #3500FF dashed 2px !important;
 }
 
 * {
@@ -36,8 +36,12 @@
 /* Create three columns of equal width */
 .columns {
     float: left;
-    width: 33.3%;
+    width: 19.7%;
     padding: 8px;
+    height: 400px;
+    overflow: auto;
+    border: #111 solid 1px;
+    margin: 2px;
 }
 
 /* Style the list */
@@ -71,6 +75,7 @@
 
 /* Grey list item */
 .price .grey {
+    padding: 5px;
     background-color: #eee;
     font-size: 20px;
 }
@@ -87,12 +92,16 @@ i{
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 10px 25px;
+    padding: 10px;
     text-align: center;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 13px;
     width: 100%;
     display: inline-block;
+}
+
+.danger{
+    background-color: #f44336;
 }
 
 /* Change the width of the three columns to 100% 

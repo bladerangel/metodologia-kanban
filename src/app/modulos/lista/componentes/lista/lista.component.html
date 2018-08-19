@@ -3,5 +3,6 @@
     <li class="header">{{lista.nome}}</li>
     <app-atividade *ngFor="let atividade of atividades" [atividade]="atividade" (eventoRemoverAtividade)="removerAtividade($event)"></app-atividade>
     <li class="grey"><button class="button" (click)="adicionarAtividade()"><i class="fa fa-plus"></i>Adicionar Atividade</button></li>
+    <li class="grey"><button class="button danger" (click)="removerLista()"><i class="fa fa-trash"></i>Remover Lista</button></li>
   </ul>
 </div>

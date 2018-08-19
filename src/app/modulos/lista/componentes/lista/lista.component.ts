@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AtividadeService } from '../../../atividade/servicos/atividade.service';
 import { Lista } from '../../modelos/lista';
 import { Atividade } from '../../../atividade/modelos/atividade';
+import { CaixaModalService } from '../../../compartilhado/caixa-modal/servicos/caixaModal.service';
 
 @Component({
   selector: 'app-lista',
@@ -12,10 +13,13 @@ import { Atividade } from '../../../atividade/modelos/atividade';
 export class ListaComponent implements OnInit {
 
   constructor(
-    private atividadeService: AtividadeService
+    private atividadeService: AtividadeService,
+    private caixaModalService: CaixaModalService
   ) { }
   @Input() lista: Lista;
   @Output() eventoAtividadeMovida = new EventEmitter();
+  @Output() eventoListaRemovida = new EventEmitter();
+
   atividades: Atividade[];
 
   ngOnInit() {
@@ -34,9 +38,7 @@ export class ListaComponent implements OnInit {
   }
 
   adicionarAtividade() {
-    this.atividadeService.salvarAtividade(new Atividade(null, 'teste', 'descricao', this.lista.quadroId, this.lista.id))
-      .subscribe(atividade => this.atualizarAtividades());
-    //this.lista.atividades.push(new Atividade(null,'aew','aaa'));
+    this.caixaModalService.emitirEvento({ modo: 'criacao', componente: 'atividade', lista: this.lista, formulario: {} });
   }
 
   atualizarAtividades() {
@@ -44,8 +46,13 @@ export class ListaComponent implements OnInit {
       .subscribe(atividades => this.atividades = atividades);
   }
 
-  removerAtividade(){
-    this.atualizarAtividades();
+  removerAtividade(id: number) {
+    this.atividades.splice(this.atividades.findIndex((atividade) => atividade.id == id), 1);
+    this.atividadeService.removerAtividade(id).subscribe();
+  }
+
+  removerLista() {
+    this.eventoListaRemovida.emit(this.lista.id);
   }
 
 }
