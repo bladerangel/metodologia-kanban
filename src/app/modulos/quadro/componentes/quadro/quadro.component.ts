@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
-import { EventosService } from '../../../compartilhado/servicos/eventos.service';
+import { CaixaModalService } from '../../../compartilhado/caixa-modal/servicos/caixaModal.service';
 import { Quadro } from '../../modelos/quadro';
 
 @Component({
@@ -11,7 +11,7 @@ import { Quadro } from '../../modelos/quadro';
 export class QuadroComponent implements OnInit {
 
   constructor(
-    private eventosService: EventosService
+    private caixaModalService: CaixaModalService
   ) { }
 
   @Input() quadro: Quadro;
@@ -25,8 +25,8 @@ export class QuadroComponent implements OnInit {
 
   }
 
-  abrirModal() {
-    this.eventosService.get('abrirModal').emit({ modo: 'edicao', quadro: this.quadro });
+  editarQuadro() {
+    this.caixaModalService.emitirEvento({ modo: 'edicao', componente: 'quadro', formulario: this.quadro });
   }
 
 }
