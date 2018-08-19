@@ -1,1 +1,15 @@
-<app-lista *ngFor="let lista of listas" [lista]="lista" (eventoAtividadeMovida)="moverAtividade($event)"></app-lista>
+<app-lista *ngFor="let lista of listas" [lista]="lista" (eventoAtividadeMovida)="moverAtividade($event)" (eventoListaRemovida)="removerLista($event)">
+</app-lista>
+
+<div class="columns">
+    <ul class="price">
+        <li class="header">
+            <button class="button" (click)="adicionarLista()"><i class="fa fa-plus"></i>Adicionar Lista</button>
+        </li>
+
+    </ul>
+</div>
+
+<app-caixa-modal (eventoSubmeterFormulario)="gerenciarLista($event)"></app-caixa-modal>
+
+<app-caixa-toast></app-caixa-toast>
