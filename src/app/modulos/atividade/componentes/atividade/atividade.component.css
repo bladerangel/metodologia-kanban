@@ -4,7 +4,7 @@ li {
     text-align: center;
 }
 
-li .closebtn {
+li .icone-excluir {
     margin-left: 15px;
     color: black;
     font-weight: bold;
@@ -15,8 +15,7 @@ li .closebtn {
     transition: 0.3s;
 }
 
-/* When moving the mouse over the close button */
-li .closebtn:hover {
+li .icone-excluir:hover {
     color: red;
 }
 
@@ -25,26 +24,16 @@ li .closebtn:hover {
 }
 
 .drag-handle {
-    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: move;
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
 }
 
-.drag-handle:active { 
+.drag-handle:active {
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
-}
-
-/* Droppable */
-
-.drag-hint-border {
-    border: #3c763d dashed 2px !important;
-}
-
-.drag-over-border {
-    border: #fbbc05 dashed 2px !important;
 }
 
 .drag-transit {

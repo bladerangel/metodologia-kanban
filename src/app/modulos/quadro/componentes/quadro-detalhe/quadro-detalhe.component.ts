@@ -4,9 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ListaService } from '../../../lista/servicos/lista.service';
 import { AtividadeService } from '../../../atividade/servicos/atividade.service';
 import { CaixaModalService } from '../../../compartilhado/caixa-modal/servicos/caixaModal.service';
-import { Lista } from '../../../lista/modelos/lista';
+import { ListaComAtividades } from '../../../lista/modelos/listaComAtividades';
 import { Atividade } from '../../../atividade/modelos/atividade';
-
+import { Lista } from '../../../lista/modelos/lista';
 
 @Component({
   selector: 'app-quadro-detalhe',
@@ -22,42 +22,67 @@ export class QuadroDetalheComponent implements OnInit {
     private caixaModalService: CaixaModalService
   ) { }
 
-  listas: Lista[];
   quadroId: number;
+  listasComAtividades: ListaComAtividades[];
 
+  /*
+  carrega todos as listas do quadro dependendo do seu id
+  */
   ngOnInit() {
     this.quadroId = this.activatedRoute.snapshot.params['id'];
-    this.atualizarListas();
+    this.atividadeService.getTodasAtividades(this.quadroId)
+      .subscribe(listasComAtividades => {
+        this.listasComAtividades = listasComAtividades
+          .map(dados => {
+            const objeto = { lista: dados, atividades: dados.atividades };
+            delete objeto.lista.atividades;
+            return objeto;
+          });
+      }
+      );
   }
 
-  moverAtividade() {
-    this.atualizarListas();
+  /*
+  mover atividade sem precisar atualizar todas as listas e atividades
+  */
+  moverAtividade(dados: any) {
+    const lista = this.listasComAtividades.find(dado => dado.lista.id == dados.listaId);
+    lista.atividades.splice(lista.atividades.findIndex((atividade) => atividade.id == dados.atividadeId), 1);
   }
 
-  gerenciarLista(dados: any) {
+  /*
+  inseri lista sem precisar atualizar todas as listas
+  ao salvar um lista cria-se as atividades vazias
+  */
+  gerenciarListas(dados: any) {
     if (dados.modo == 'criacao') {
       if (dados.componente == 'atividade') {
         this.atividadeService.salvarAtividade(new Atividade(null, dados.formulario.nome, dados.formulario.descricao, dados.lista.quadroId, dados.lista.id))
-          .subscribe(atividade => this.atualizarListas());
+          .subscribe((atividade) => {
+            const lista = this.listasComAtividades.find(dado => dado.lista.id == dados.lista.id);
+            lista.atividades.push(atividade);
+          });
       } else {
-        this.listaService.salvarLista(new Lista(null, dados.formulario.nome, this.quadroId))
-          .subscribe(lista => this.atualizarListas());
+        this.listaService.salvarLista(new Lista(null, dados.formulario.nome, this.quadroId)).subscribe((lista) => {
+          this.listasComAtividades.push({ lista: lista, atividades: [] });
+        });
       }
     }
   }
 
+  /*
+  invoca evento para abrir modal
+  */
   adicionarLista() {
     this.caixaModalService.emitirEvento({ modo: 'criacao', componente: 'lista', formulario: {} });
   }
 
-  atualizarListas() {
-    this.listaService.getListas(this.quadroId)
-      .subscribe(listas => this.listas = listas);
-  }
-
-  removerLista(id: number) {
-    this.listas.splice(this.listas.findIndex((quadro) => quadro.id == id), 1);
-    this.listaService.removerLista(id).subscribe();
+  /*
+  remove lista sem precisar atualizar todas as listas
+  */
+  removerLista(listaId: number) {
+    this.listasComAtividades.splice(this.listasComAtividades.findIndex((lista) => lista.lista.id == listaId), 1);
+    this.listaService.removerLista(listaId).subscribe();
   }
 
 }

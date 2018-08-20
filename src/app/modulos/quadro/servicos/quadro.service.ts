@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { Quadro } from '../modelos/quadro';
 
@@ -12,25 +13,22 @@ export class QuadroService {
     private httpClient: HttpClient
   ) { }
 
-  url = 'http://localhost:3000/';
+  url = 'http://localhost:3000/quadros/';
 
-  getQuadros() {
-    return this.httpClient.get<Quadro[]>(this.url + 'quadros');
+  getQuadros(): Observable<Quadro[]> {
+    return this.httpClient.get<Quadro[]>(this.url);
   }
 
-  getQuadro(id: number) {
-    return this.httpClient.get<Quadro>(this.url + 'quadros/' + id);
+  salvarQuadro(quadro: Quadro): Observable<Quadro> {
+    return this.httpClient.post<Quadro>(this.url, quadro);
   }
 
-  salvarQuadro(quadro: Quadro) {
-    return this.httpClient.post<Quadro>(this.url + 'quadros', quadro);
+  renomearQuadro(quadro: Quadro): Observable<Quadro> {
+    return this.httpClient.put<Quadro>(this.url + quadro.id, quadro);
   }
 
-  removerQuadro(id: number) {
-    return this.httpClient.delete(this.url + 'quadros/' + id);
+  removerQuadro(quadroId: number): Observable<any> {
+    return this.httpClient.delete(this.url + quadroId);
   }
 
-  renomearQuadro(quadro: Quadro) {
-    return this.httpClient.put<Quadro>(this.url + 'quadros/' + quadro.id, quadro);
-  }
 }

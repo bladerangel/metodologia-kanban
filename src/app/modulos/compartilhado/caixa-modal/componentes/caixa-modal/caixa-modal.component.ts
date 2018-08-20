@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-
-
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+
 import { CaixaModalService } from '../../servicos/caixaModal.service';
 
 @Component({
@@ -21,8 +20,11 @@ export class CaixaModalComponent implements OnInit {
   formulario: FormGroup;
   dados: any;
 
+  /*
+  carrega formulario dinamicamente
+  escuta evento que pode ser disparado por qualquer componente
+  */
   ngOnInit() {
-
     this.formulario = this.contruirFormulario.group({
       nome: ['', Validators.required]
     });
@@ -43,16 +45,26 @@ export class CaixaModalComponent implements OnInit {
     });
   }
 
+  /*
+  alterar o estilo do modal para ser exibido
+  */
   abrirModal() {
     this.render.setStyle(this.modal.nativeElement, 'display', 'block');
 
   }
 
+  /*
+  reseta valores do fomulario
+  alterar o estilo do modal para ser fechado
+  */
   fecharModal() {
     this.formulario.reset();
     this.render.setStyle(this.modal.nativeElement, 'display', 'none');
   }
 
+  /*
+  avisa o componente qualquer sobre o envia dos dados preenchidos
+  */
   submeterFormulario() {
     this.dados.formulario.nome = this.formulario.value.nome;
     if (this.dados.componente == 'atividade') {

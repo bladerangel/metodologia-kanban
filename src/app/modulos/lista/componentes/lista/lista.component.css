@@ -1,21 +1,13 @@
-.drag-border {
-    border: #ff525b dashed 2px !important;
+.colunas {
+    border: #111 solid 1px;
+    margin: 2px;
 }
 
-.drag-handle {
-    cursor: move; /* fallback if grab cursor is unsupported */
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
+.lista .cinza {
+    padding: 5px;
+    background-color: #eee;
+    font-size: 20px;
 }
-
-.drag-handle:active { 
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-}
-
-/* Droppable */
 
 .drag-hint-border {
     border: #3c763d dashed 2px !important;
@@ -25,89 +17,3 @@
     border: #fbbc05 dashed 2px !important;
 }
 
-.drag-transit {
-    border: #3500FF dashed 2px !important;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-/* Create three columns of equal width */
-.columns {
-    float: left;
-    width: 19.7%;
-    padding: 8px;
-    height: 400px;
-    overflow: auto;
-    border: #111 solid 1px;
-    margin: 2px;
-}
-
-/* Style the list */
-.price {
-    list-style-type: none;
-    border: 1px solid #eee;
-    margin: 0;
-    padding: 0;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-}
-
-/* Add shadows on hover */
-.price:hover {
-    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
-}
-
-/* Pricing header */
-.price .header {
-    background-color: #111;
-    color: white;
-    font-size: 25px;
-}
-
-/* List items */
-.price li {
-    border-bottom: 1px solid #eee;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Grey list item */
-.price .grey {
-    padding: 5px;
-    background-color: #eee;
-    font-size: 20px;
-}
-.container{
-    border: 1px solid red;
-    width: 336px;
-    height: 69px;
- }
-i{
-    padding: 0 16px 0 0; /* Some padding */
-}
-/* The "Sign Up" button */
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 13px;
-    width: 100%;
-    display: inline-block;
-}
-
-.danger{
-    background-color: #f44336;
-}
-
-/* Change the width of the three columns to 100% 
-(to stack horizontally on small screens) */
-@media only screen and (max-width: 600px) {
-    .columns {
-        width: 100%;
-    }
-}

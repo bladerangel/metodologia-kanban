@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 import { CaixaModalService } from '../../../compartilhado/caixa-modal/servicos/caixaModal.service';
 import { Quadro } from '../../modelos/quadro';
@@ -8,7 +8,7 @@ import { Quadro } from '../../modelos/quadro';
   templateUrl: './quadro.component.html',
   styleUrls: ['./quadro.component.css']
 })
-export class QuadroComponent implements OnInit {
+export class QuadroComponent {
 
   constructor(
     private caixaModalService: CaixaModalService
@@ -17,14 +17,17 @@ export class QuadroComponent implements OnInit {
   @Input() quadro: Quadro;
   @Output() eventoRemoverQuadro = new EventEmitter();
 
-  ngOnInit() {
-  }
-
+  /*
+  avisa ao componente quadros que foi removido o quadro
+  */
   removerQuadro() {
     this.eventoRemoverQuadro.emit(this.quadro.id);
 
   }
 
+  /*
+  invoca evento para abrir modal
+  */
   editarQuadro() {
     this.caixaModalService.emitirEvento({ modo: 'edicao', componente: 'quadro', formulario: this.quadro });
   }

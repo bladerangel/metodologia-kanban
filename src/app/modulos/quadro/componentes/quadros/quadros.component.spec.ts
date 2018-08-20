@@ -8,9 +8,9 @@ describe('QuadrosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuadrosComponent ]
+      declarations: [QuadrosComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,15 +1,19 @@
-<app-lista *ngFor="let lista of listas" [lista]="lista" (eventoAtividadeMovida)="moverAtividade($event)" (eventoListaRemovida)="removerLista($event)">
-</app-lista>
+<div class="conteudo">
 
-<div class="columns">
-    <ul class="price">
-        <li class="header">
-            <button class="button" (click)="adicionarLista()"><i class="fa fa-plus"></i>Adicionar Lista</button>
-        </li>
+    <app-lista *ngFor="let listaComAtividades of listasComAtividades" [listaComAtividades]="listaComAtividades" (eventoMoverAtividade)="moverAtividade($event)" (eventoRemoverLista)="removerLista($event)"></app-lista>
 
-    </ul>
+    <div class="colunas">
+        <ul class="lista">
+            <li class="titulo-lista">
+                <button class="botao verde" (click)="adicionarLista()">
+                    <i class="fa fa-plus"></i>Adicionar Lista
+                </button>
+            </li>
+
+        </ul>
+    </div>
 </div>
 
-<app-caixa-modal (eventoSubmeterFormulario)="gerenciarLista($event)"></app-caixa-modal>
+<app-caixa-modal (eventoSubmeterFormulario)="gerenciarListas($event)"></app-caixa-modal>
 
 <app-caixa-toast></app-caixa-toast>

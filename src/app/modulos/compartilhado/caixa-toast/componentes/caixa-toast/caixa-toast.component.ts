@@ -17,6 +17,10 @@ export class CaixaToastComponent implements OnInit {
   @ViewChild('toast') toast: ElementRef;
   mensagem: string;
   esperaAnimacao: boolean = true;
+
+  /*
+  escuta evento que pode ser disparado por qualquer componente
+  */
   ngOnInit() {
     this.caixaToastService.escutarEvento((dados) => {
       if (this.esperaAnimacao) {
@@ -27,16 +31,21 @@ export class CaixaToastComponent implements OnInit {
     });
   }
 
+  /*
+  alterar o classe do toast para ser exibido
+  espera animacao terminar para executar outra requisicao
+  */
   abrirToast() {
     this.render.addClass(this.toast.nativeElement, 'show');
-    setTimeout(() => { this.render.removeClass(this.toast.nativeElement, 'show'); this.esperaAnimacao = true; }, 3000);
+    setTimeout(() => {
+      this.render.removeClass(this.toast.nativeElement, 'show');
+      this.esperaAnimacao = true;
+    }, 3000);
 
   }
 
-
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.caixaToastService.removerEvento();
-
   }
 
 }

@@ -1,17 +1,30 @@
-<div class="column">
-  <div class="card">
-    <h3>{{quadro.nome}}</h3>
-    <div class="tooltip">
-      <a [routerLink]="['/quadro-detalhe', quadro.id]"><button class="btn success"><i class="fa fa-eye"></i></button></a>
-      <span class="tooltiptext">Ver Quadro</span>
+<div class="coluna">
+  <div class="cartao">
+
+    <h3 class="titulo-quadro">{{quadro.nome}}</h3>
+
+    <div class="informacao">
+      <a [routerLink]="['/quadro-detalhe', quadro.id]">
+        <button class="acoes verde">
+          <i class="fa fa-eye"></i>
+        </button>
+      </a>
+      <span class="informacao-texto">Ver Quadro</span>
     </div>
-    <div class="tooltip">
-      <button (click)="editarQuadro()" class="btn info"><i class="fa fa-pencil"></i></button>
-      <span class="tooltiptext">Renomear Quadro</span>
+
+    <div class="informacao">
+      <button (click)="editarQuadro()" class="acoes azul">
+        <i class="fa fa-pencil"></i>
+      </button>
+      <span class="informacao-texto">Renomear Quadro</span>
     </div>
-    <div class="tooltip">
-      <button (click)="removerQuadro()" class="btn danger"><i class="fa fa-trash"></i></button>
-      <span class="tooltiptext">Deletar Quadro</span>
+
+    <div class="informacao">
+      <button (click)="removerQuadro()" class="acoes vermelho">
+        <i class="fa fa-trash"></i>
+      </button>
+      <span class="informacao-texto">Deletar Quadro</span>
     </div>
+    
   </div>
 </div>

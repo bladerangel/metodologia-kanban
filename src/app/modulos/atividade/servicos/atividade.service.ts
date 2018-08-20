@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Atividade } from '../modelos/atividade';
+import { ListaComAtividades } from '../../lista/modelos/listaComAtividades';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,12 @@ export class AtividadeService {
   }
 
   getAtividades(listaId: number) {
-    return this.httpClient.get<Atividade[]>(this.url + 'lista/' + listaId + '/atividades');
+    
+  }
+
+  getTodasAtividades(quadroId: number){
+    return this.httpClient.get<any>(this.url + 'quadros/' + quadroId + '/listas?_embed=atividades');
+   
   }
 
   removerAtividade(atividadeId: number) {

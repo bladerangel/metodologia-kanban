@@ -1,46 +1,22 @@
-* {
-  box-sizing: border-box;
+.linha {
+  margin: 0 -5px;
 }
 
-.row {
-    margin: 0 -5px;
-}
-
-.row:after {
+.linha:after {
   content: "";
   display: table;
   clear: both;
 }
-.column {
-  float: left;
-  width: 33%;
-  padding: 10px;
+
+span {
+  font-size: 16px;
 }
 
-span{
-  font-size: 16px; /* Set a font size */
-}
-span i{
-  padding: 50px 16px; /* Some padding */
+span i {
+  padding: 50px 16px;
 }
 
-.card {
+.cartao {
   outline-style: dashed;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-  cursor: pointer; 
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
+  cursor: pointer;
 }
