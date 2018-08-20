@@ -19,13 +19,8 @@ export class AtividadeService {
     return this.httpClient.post<Atividade>(this.url + 'atividades', atividade);
   }
 
-  getAtividades(listaId: number) {
-    
-  }
-
-  getTodasAtividades(quadroId: number){
+  getTodasAtividades(quadroId: number) {
     return this.httpClient.get<any>(this.url + 'quadros/' + quadroId + '/listas?_embed=atividades');
-   
   }
 
   removerAtividade(atividadeId: number) {
@@ -33,6 +28,6 @@ export class AtividadeService {
   }
 
   moverAtividade(atividade: Atividade) {
-    return this.httpClient.put<Atividade>(this.url + 'atividades/'+ atividade.id, atividade);
+    return this.httpClient.put<Atividade>(this.url + 'atividades/' + atividade.id, atividade);
   }
 }

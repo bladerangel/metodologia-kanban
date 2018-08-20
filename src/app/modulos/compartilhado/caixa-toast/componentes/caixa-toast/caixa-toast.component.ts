@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 
 import { CaixaToastService } from '../../servicos/caixaToast.service';
 
@@ -7,7 +7,7 @@ import { CaixaToastService } from '../../servicos/caixaToast.service';
   templateUrl: './caixa-toast.component.html',
   styleUrls: ['./caixa-toast.component.css']
 })
-export class CaixaToastComponent implements OnInit {
+export class CaixaToastComponent implements OnInit, OnDestroy {
 
   constructor(
     private render: Renderer2,
@@ -16,7 +16,7 @@ export class CaixaToastComponent implements OnInit {
 
   @ViewChild('toast') toast: ElementRef;
   mensagem: string;
-  esperaAnimacao: boolean = true;
+  esperaAnimacao = true;
 
   /*
   escuta evento que pode ser disparado por qualquer componente
@@ -44,6 +44,9 @@ export class CaixaToastComponent implements OnInit {
 
   }
 
+  /*
+  remove evento ao sair do componente
+  */
   ngOnDestroy() {
     this.caixaToastService.removerEvento();
   }

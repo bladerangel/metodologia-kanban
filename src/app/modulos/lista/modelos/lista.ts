@@ -8,7 +8,7 @@ export class Lista {
 }
 
 export enum ListaObrigatoria {
-    Fazer = "Fazer",
-    Fazendo = "Fazendo",
-    Feito = "Feito"
+    Fazer = 'Fazer',
+    Fazendo = 'Fazendo',
+    Feito = 'Feito'
 }

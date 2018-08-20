@@ -42,16 +42,15 @@ export class QuadrosComponent implements OnInit {
   edita nome do quadro
   */
   gerenciarQuadros(dados: any) {
-    if (dados.modo == 'criacao') {
+    if (dados.modo === 'criacao') {
       this.quadroService.salvarQuadro(new Quadro(null, dados.formulario.nome))
         .subscribe(quadro => {
           this.quadros.push(quadro);
-          for (const lista in ListaObrigatoria) {
+          for (const lista in Object.values(ListaObrigatoria)) {
             this.listaService.salvarLista(new Lista(null, lista, quadro.id)).subscribe();
           }
         });
-    }
-    else {
+    } else {
       this.quadroService.renomearQuadro(dados.formulario).subscribe();
     }
   }
@@ -60,7 +59,7 @@ export class QuadrosComponent implements OnInit {
   remove quadro sem precisar atualizar todos os quadros
   */
   removerQuadro(quadroId: number) {
-    this.quadros.splice(this.quadros.findIndex((quadro) => quadro.id == quadroId), 1);
+    this.quadros.splice(this.quadros.findIndex((quadro) => quadro.id === quadroId), 1);
     this.quadroService.removerQuadro(quadroId).subscribe();
   }
 }

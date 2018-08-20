@@ -50,7 +50,7 @@ export class ListaComponent {
   remove atividade sem precisar atualizar todas as atividades
   */
   removerAtividade(atividadeId: number) {
-    this.listaComAtividades.atividades.splice(this.listaComAtividades.atividades.findIndex((atividade) => atividade.id == atividadeId), 1);
+    this.listaComAtividades.atividades.splice(this.listaComAtividades.atividades.findIndex((atividade) => atividade.id === atividadeId), 1);
     this.atividadeService.removerAtividade(atividadeId).subscribe();
   }
 

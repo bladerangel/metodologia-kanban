@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, Renderer2, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 
 import { CaixaModalService } from '../../servicos/caixaModal.service';
@@ -8,7 +8,7 @@ import { CaixaModalService } from '../../servicos/caixaModal.service';
   templateUrl: './caixa-modal.component.html',
   styleUrls: ['./caixa-modal.component.css']
 })
-export class CaixaModalComponent implements OnInit {
+export class CaixaModalComponent implements OnInit, OnDestroy {
 
   constructor(
     private render: Renderer2,
@@ -31,14 +31,14 @@ export class CaixaModalComponent implements OnInit {
     this.caixaModalService.escutarEvento((dados) => {
       this.dados = dados;
       console.log('aki', dados);
-      if (this.dados.componente == 'atividade') {
+      if (this.dados.componente === 'atividade') {
         this.formulario.addControl('descricao', new FormControl());
-        if (this.dados.modo == 'edicao') {
+        if (this.dados.modo === 'edicao') {
           this.formulario.patchValue({ nome: this.dados.formulario.nome, descricao: this.dados.formulario.descricao });
         }
       } else {
-        if (this.dados.modo == 'edicao') {
-          this.formulario.patchValue({ nome: this.dados.formulario.nome })
+        if (this.dados.modo === 'edicao') {
+          this.formulario.patchValue({ nome: this.dados.formulario.nome });
         }
       }
       this.abrirModal();
@@ -67,13 +67,16 @@ export class CaixaModalComponent implements OnInit {
   */
   submeterFormulario() {
     this.dados.formulario.nome = this.formulario.value.nome;
-    if (this.dados.componente == 'atividade') {
+    if (this.dados.componente === 'atividade') {
       this.dados.formulario.descricao = this.formulario.value.descricao;
     }
     this.eventoSubmeterFormulario.emit(this.dados);
     this.fecharModal();
   }
 
+  /*
+ remove evento ao sair do componente
+ */
   ngOnDestroy() {
     this.caixaModalService.removerEvento();
   }

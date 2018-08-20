@@ -5,7 +5,7 @@ import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/co
   templateUrl: './cabecalho.component.html',
   styleUrls: ['./cabecalho.component.css']
 })
-export class CabecalhoComponent implements OnInit {
+export class CabecalhoComponent {
 
   constructor(
     private renderizacao: Renderer2
@@ -13,10 +13,9 @@ export class CabecalhoComponent implements OnInit {
 
   @ViewChild('menu') menu: ElementRef;
 
-  ngOnInit() {
-  }
-
-  //verifica se menu encontra-se aberto, caso nao esteja o menu é aberto
+  /*
+  verifica se menu encontra-se aberto, caso nao esteja o menu é aberto
+  */
   abrirMenu() {
     if (this.fecharMenu()) {
       this.renderizacao.addClass(this.menu.nativeElement, 'responsivo');

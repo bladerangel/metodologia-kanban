@@ -46,8 +46,8 @@ export class QuadroDetalheComponent implements OnInit {
   mover atividade sem precisar atualizar todas as listas e atividades
   */
   moverAtividade(dados: any) {
-    const lista = this.listasComAtividades.find(dado => dado.lista.id == dados.listaId);
-    lista.atividades.splice(lista.atividades.findIndex((atividade) => atividade.id == dados.atividadeId), 1);
+    const lista = this.listasComAtividades.find(dado => dado.lista.id === dados.listaId);
+    lista.atividades.splice(lista.atividades.findIndex((atividade) => atividade.id === dados.atividadeId), 1);
   }
 
   /*
@@ -55,11 +55,12 @@ export class QuadroDetalheComponent implements OnInit {
   ao salvar um lista cria-se as atividades vazias
   */
   gerenciarListas(dados: any) {
-    if (dados.modo == 'criacao') {
-      if (dados.componente == 'atividade') {
-        this.atividadeService.salvarAtividade(new Atividade(null, dados.formulario.nome, dados.formulario.descricao, dados.lista.quadroId, dados.lista.id))
+    if (dados.modo === 'criacao') {
+      if (dados.componente === 'atividade') {
+        this.atividadeService.salvarAtividade(
+          new Atividade(null, dados.formulario.nome, dados.formulario.descricao, dados.lista.quadroId, dados.lista.id))
           .subscribe((atividade) => {
-            const lista = this.listasComAtividades.find(dado => dado.lista.id == dados.lista.id);
+            const lista = this.listasComAtividades.find(dado => dado.lista.id === dados.lista.id);
             lista.atividades.push(atividade);
           });
       } else {
@@ -81,7 +82,7 @@ export class QuadroDetalheComponent implements OnInit {
   remove lista sem precisar atualizar todas as listas
   */
   removerLista(listaId: number) {
-    this.listasComAtividades.splice(this.listasComAtividades.findIndex((lista) => lista.lista.id == listaId), 1);
+    this.listasComAtividades.splice(this.listasComAtividades.findIndex((lista) => lista.lista.id === listaId), 1);
     this.listaService.removerLista(listaId).subscribe();
   }
 
