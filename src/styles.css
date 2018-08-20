@@ -1,1 +1,114 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.conteudo {
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.colunas {
+    width: 19.2%;
+    float: left;
+    padding: 8px;
+    height: 400px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.coluna {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.cartao {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+.cartao:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.lista {
+    list-style-type: none;
+    border: 1px solid #eee;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.lista:hover {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2)
+}
+
+.lista .titulo-lista {
+    background-color: #111;
+    color: white;
+    font-size: 25px;
+}
+
+.lista li {
+    border-bottom: 1px solid #eee;
+    padding: 17px;
+    text-align: center;
+}
+
+.botao {
+    border: none;
+    color: white;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.icone {
+    padding: 0 16px 0 0;
+}
+
+.verde {
+    background-color: #4CAF50;
+}
+
+.verde:hover {
+    background-color: #46a049;
+}
+
+.azul {
+    background-color: #2196F3;
+}
+
+.azul:hover {
+    background: #0b7dda;
+}
+
+.vermelho {
+    background-color: #f44336;
+}
+
+.vermelho:hover {
+    background: #da190b;
+}
+
+@media only screen and (max-width: 600px) {
+    .conteudo {
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+
+    .colunas {
+        width: 100%;
+    }
+
+    .coluna {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
