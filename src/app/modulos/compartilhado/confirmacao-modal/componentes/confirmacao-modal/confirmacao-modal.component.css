@@ -30,17 +30,7 @@
     color: white;
 }
 
-select {
-    width: 100%;
-    padding: 12px 20px;
-    margin-top: 8px;
-    margin-bottom: 10px; 
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.botao{
+.botao {
     margin-bottom: 8px;
 }
 

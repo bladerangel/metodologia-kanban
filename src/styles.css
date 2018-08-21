@@ -1,5 +1,4 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-
 .conteudo {
     margin-left: 10px;
     margin-top: 20px;
@@ -71,6 +70,16 @@
     padding-top: 60px;
 }
 
+.formulario-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
 .botao {
     border: none;
     color: white;
@@ -115,11 +124,9 @@
         margin-left: 0px;
         margin-top: 20px;
     }
-
     .colunas {
         width: 100%;
     }
-
     .coluna {
         width: 100%;
         display: block;

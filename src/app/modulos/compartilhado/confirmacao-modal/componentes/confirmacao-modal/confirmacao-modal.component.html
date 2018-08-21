@@ -9,7 +9,7 @@
     <div class="modal-corpo">
       <h2>Você deseja fazer com a lista ?</h2>
       <label for="nomeLista"><b> Nome das listas:</b></label>
-      <select name="nomeLista" [(ngModel)]="listaComAtividadesSelecionada">
+      <select class="formulario-input" name="nomeLista" [(ngModel)]="listaComAtividadesSelecionada">
         <option *ngFor="let listaComAtividades of listasComAtividadesExibidas" [ngValue]="listaComAtividades">{{listaComAtividades.lista.nome}}</option>
       </select>
       <button (click)="mover()" class="botao verde">Mover</button>
