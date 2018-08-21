@@ -1,15 +1,24 @@
 <div class="conteudo">
   <div class="linha">
 
-    <app-quadro *ngFor="let quadro of quadros" [quadro]="quadro" (eventoRemoverQuadro)="removerQuadro($event)"></app-quadro>
+    <app-quadro 
+    *ngFor="let quadro of quadros" 
+    [quadro]="quadro" 
+    (eventoRemoverQuadro)="removerQuadro($event)">
+    </app-quadro>
+   
 
     <div class="coluna">
       <div class="cartao" (click)="adicionarQuadro()">
-        <span><i class="fa fa-plus"></i>Adicionar Quadro</span>
+        <span>
+          <i class="fa fa-plus"></i>Adicionar Quadro
+        </span>
       </div>
     </div>
 
   </div>
 </div>
 
-<app-caixa-modal (eventoSubmeterFormulario)="gerenciarQuadros($event)"></app-caixa-modal>
+<app-caixa-modal
+(eventoSubmeterFormulario)="gerenciarQuadros($event)">
+</app-caixa-modal>

@@ -33,7 +33,11 @@ export class QuadrosComponent implements OnInit {
   invoca evento para abrir modal
   */
   adicionarQuadro() {
-    this.caixaModalService.emitirEvento({ modo: 'criacao', componente: 'quadro', formulario: {} });
+    this.caixaModalService.emitirEvento(
+      {
+        modo: 'criacao',
+        componente: 'quadro', formulario: {}
+      });
   }
 
   /*
@@ -58,7 +62,7 @@ export class QuadrosComponent implements OnInit {
   remove quadro sem precisar atualizar todos os quadros
   */
   removerQuadro(quadroId: number) {
-    this.quadros.splice(this.quadros.findIndex((quadro) => quadro.id === quadroId), 1);
+    this.quadros.splice(this.quadros.findIndex(quadro => quadro.id === quadroId), 1);
     this.quadroService.removerQuadro(quadroId).subscribe();
   }
 }
