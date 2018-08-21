@@ -30,7 +30,7 @@ export class QuadroComponent {
   editarQuadro() {
     this.caixaModalService.emitirEvento(
       {
-        modo: 'edicao',
+        modo: 'editar',
         componente: 'quadro',
         formulario: this.quadro
       });

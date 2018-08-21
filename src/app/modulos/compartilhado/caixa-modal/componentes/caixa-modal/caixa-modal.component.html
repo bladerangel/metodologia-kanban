@@ -1,7 +1,7 @@
 <div class="modal" #modal>
 
   <form class="modal-conteudo animacao" [formGroup]="formulario" (ngSubmit)="submeterFormulario()">
-    
+
     <div class="caixa">
       <span (click)="fecharModal()" class="icone-fechar" title="Close Modal">&times;</span>
     </div>
@@ -15,7 +15,7 @@
         <textarea class="formulario-input" rows="4" placeholder="Digite descricao:" name="descricao" formControlName="descricao"></textarea>
       </div>
 
-      <button class="botao verde" [disabled]="!formulario.valid" type="submit">Criar Quadro</button>
+      <button class="botao verde" [disabled]="!formulario.valid" type="submit">{{dados?.modo | titlecase}} {{dados?.componente}}</button>
 
     </div>
 

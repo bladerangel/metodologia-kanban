@@ -35,7 +35,7 @@ export class QuadrosComponent implements OnInit {
   adicionarQuadro() {
     this.caixaModalService.emitirEvento(
       {
-        modo: 'criacao',
+        modo: 'criar',
         componente: 'quadro', formulario: {}
       });
   }
@@ -46,7 +46,7 @@ export class QuadrosComponent implements OnInit {
   edita nome do quadro
   */
   gerenciarQuadros(dados: any) {
-    if (dados.modo === 'criacao') {
+    if (dados.modo === 'criar') {
       this.quadroService.salvarQuadro(new Quadro(null, dados.formulario.nome))
         .subscribe(quadro => {
           this.quadros.push(quadro);

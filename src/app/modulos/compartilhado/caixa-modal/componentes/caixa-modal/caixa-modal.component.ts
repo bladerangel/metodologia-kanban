@@ -33,11 +33,11 @@ export class CaixaModalComponent implements OnInit, OnDestroy {
       this.dados = dados;
       if (this.dados.componente === 'atividade') {
         this.formulario.addControl('descricao', new FormControl());
-        if (this.dados.modo === 'edicao') {
+        if (this.dados.modo === 'editar') {
           this.formulario.patchValue({ nome: this.dados.formulario.nome, descricao: this.dados.formulario.descricao });
         }
       } else {
-        if (this.dados.modo === 'edicao') {
+        if (this.dados.modo === 'editar') {
           this.formulario.patchValue({ nome: this.dados.formulario.nome });
         }
       }

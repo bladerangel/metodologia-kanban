@@ -61,7 +61,7 @@ export class QuadroDetalheComponent implements OnInit {
   inseri atividades numa determinada lista sem precisar atualizar todas as atividades
   */
   gerenciarListas(dados: any) {
-    if (dados.modo === 'criacao') {
+    if (dados.modo === 'criar') {
       if (dados.componente === 'atividade') {
         this.atividadeService.salvarAtividade(
           new Atividade(null, dados.formulario.nome, dados.formulario.descricao, dados.lista.quadroId, dados.lista.id))
@@ -105,7 +105,7 @@ export class QuadroDetalheComponent implements OnInit {
   adicionarLista() {
     this.caixaModalService.emitirEvento(
       {
-        modo: 'criacao',
+        modo: 'criar',
         componente: 'lista',
         formulario: {}
       });

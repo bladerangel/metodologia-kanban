@@ -50,7 +50,7 @@ export class ListaComponent {
   adicionarAtividade() {
     this.caixaModalService.emitirEvento(
       {
-        modo: 'criacao',
+        modo: 'criar',
         componente: 'atividade',
         lista: this.listaComAtividades.lista,
         formulario: {}
