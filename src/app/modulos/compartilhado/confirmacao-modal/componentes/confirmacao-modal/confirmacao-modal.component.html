@@ -1,0 +1,22 @@
+<div class="modal" #modal>
+  <div class="modal-conteudo">
+
+    <div class="modal-cabecalho vermelho">
+      <span class="icone-fechar" (click)="fecharModal()">&times;</span>
+      <h2>Deletar Lista</h2>
+    </div>
+
+    <div class="modal-corpo">
+      <h2>Você deseja fazer com a lista ?</h2>
+      <label for="nomeLista"><b> Nome das listas:</b></label>
+      <select name="nomeLista" [(ngModel)]="listaComAtividadesSelecionada">
+        <option *ngFor="let listaComAtividades of listasComAtividadesExibidas" [ngValue]="listaComAtividades">{{listaComAtividades.lista.nome}}</option>
+      </select>
+      <button (click)="mover()" class="botao verde">Mover</button>
+      <button (click)="deletar()" class="botao vermelho">Deletar</button>
+    </div>
+
+    <div class="modal-rodape">
+    </div>
+  </div>
+</div>

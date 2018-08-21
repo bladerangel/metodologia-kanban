@@ -15,6 +15,7 @@ import { AtividadeComponent } from './modulos/atividade/componentes/atividade/at
 import { CaixaModalComponent } from './modulos/compartilhado/caixa-modal/componentes/caixa-modal/caixa-modal.component';
 import { CabecalhoComponent } from './modulos/compartilhado/cabecalho/cabecalho.component';
 import { CaixaToastComponent } from './modulos/compartilhado/caixa-toast/componentes/caixa-toast/caixa-toast.component';
+import { ConfirmacaoModalComponent } from './modulos/compartilhado/confirmacao-modal/componentes/confirmacao-modal/confirmacao-modal.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CaixaToastComponent } from './modulos/compartilhado/caixa-toast/compone
     CaixaModalComponent,
     ListaComponent,
     AtividadeComponent,
-    CaixaToastComponent
+    CaixaToastComponent,
+    ConfirmacaoModalComponent
   ],
   imports: [
     BrowserModule,
