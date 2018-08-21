@@ -5,8 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 usando roteamento lazy loading
 */
 const routes: Routes = [
-  { path: '', loadChildren: './modulos/quadro/quadro.module#QuadroModule' },
-  { path: 'sobre', loadChildren: './modulos/sobre/sobre.module#SobreModule' }
+  {
+    path: '',
+    loadChildren: './modulos/quadro/quadro.module#QuadroModule'
+  },
+  {
+    path: 'sobre',
+    loadChildren: './modulos/sobre/sobre.module#SobreModule'
+  }
 ];
 
 @NgModule({
