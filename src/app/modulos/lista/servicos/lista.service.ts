@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Lista } from '../modelos/lista';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { Lista } from '../modelos/lista';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +13,13 @@ export class ListaService {
     private httpClient: HttpClient
   ) { }
 
-  url = 'http://localhost:3000/';
+  url = 'http://localhost:3000/listas/';
 
-  getListas(quadroId: number) {
-    return this.httpClient.get<Lista[]>(this.url + 'quadros/' + quadroId + '/listas');
+  salvarLista(lista: Lista): Observable<Lista> {
+    return this.httpClient.post<Lista>(this.url, lista);
   }
 
-  salvarLista(lista: Lista) {
-    return this.httpClient.post<Lista>(this.url + 'listas', lista);
-  }
-
-  removerLista(id: number) {
-    return this.httpClient.delete(this.url + 'listas/' + id);
+  removerLista(id: number): Observable<any> {
+    return this.httpClient.delete(this.url + id);
   }
 }

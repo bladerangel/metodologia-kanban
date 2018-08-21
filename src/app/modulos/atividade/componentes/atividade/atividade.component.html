@@ -1,3 +1,4 @@
-<li draggable [dragData]="atividade" (click)="exibirDescricao()">{{atividade.titulo}}
+<li draggable [dragData]="atividade" (click)="exibirDescricao()">
+    {{atividade.titulo}}
     <span class="icone-excluir" (click)="removerAtividade()">&times;</span>
 </li>

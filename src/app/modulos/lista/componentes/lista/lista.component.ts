@@ -34,7 +34,7 @@ export class ListaComponent {
       });
     evento.dragData.listaId = this.listaComAtividades.lista.id;
     this.listaComAtividades.atividades.push(evento.dragData);
-    this.atividadeService.moverAtividade(evento.dragData).subscribe();
+    this.atividadeService.atualizarAtividade(evento.dragData).subscribe();
   }
 
   /*

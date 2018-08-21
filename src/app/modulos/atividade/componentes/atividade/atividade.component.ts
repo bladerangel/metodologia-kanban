@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
-import { AtividadeService } from '../../servicos/atividade.service';
-import { Atividade } from '../../modelos/atividade';
 import { CaixaToastService } from '../../../compartilhado/caixa-toast/servicos/caixaToast.service';
+import { Atividade } from '../../modelos/atividade';
 
 @Component({
   selector: 'app-atividade',
@@ -16,13 +15,17 @@ export class AtividadeComponent {
   ) { }
 
   @Input() atividade: Atividade;
-  @Output() eventoRemoverAtividade = new EventEmitter();
+  @Output() eventoRemoverAtividade = new EventEmitter<number>();
 
   /*
   invoca evento para exibir o toast
   */
   exibirDescricao() {
-    this.caixaToastService.emitirEvento({ atividade: this.atividade.titulo, mensagem: this.atividade.descricao });
+    this.caixaToastService.emitirEvento(
+      {
+        atividade: this.atividade.titulo,
+        mensagem: this.atividade.descricao
+      });
   }
 
   /*
@@ -30,6 +33,5 @@ export class AtividadeComponent {
   */
   removerAtividade() {
     this.eventoRemoverAtividade.emit(this.atividade.id);
-
   }
 }

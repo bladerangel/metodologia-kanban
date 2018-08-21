@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { Atividade } from '../modelos/atividade';
 
@@ -14,15 +15,15 @@ export class AtividadeService {
 
   url = 'http://localhost:3000/atividades/';
 
-  salvarAtividade(atividade: Atividade) {
+  salvarAtividade(atividade: Atividade): Observable<Atividade> {
     return this.httpClient.post<Atividade>(this.url, atividade);
   }
 
-  moverAtividade(atividade: Atividade) {
+  atualizarAtividade(atividade: Atividade): Observable<Atividade> {
     return this.httpClient.put<Atividade>(this.url + atividade.id, atividade);
   }
 
-  removerAtividade(atividadeId: number) {
+  removerAtividade(atividadeId: number): Observable<any> {
     return this.httpClient.delete(this.url + atividadeId);
   }
 

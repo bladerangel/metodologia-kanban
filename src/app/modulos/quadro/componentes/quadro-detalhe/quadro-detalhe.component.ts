@@ -93,7 +93,7 @@ export class QuadroDetalheComponent implements OnInit {
       dados.listaComAtividades.atividades.forEach(atividade => {
         atividade.listaId = dados.listaComAtividadesSelecionada.lista.id;
         dados.listaComAtividadesSelecionada.atividades.push(atividade);
-        this.atividadeService.moverAtividade(atividade).subscribe();
+        this.atividadeService.atualizarAtividade(atividade).subscribe();
       });
       this.removerLista(dados.listaComAtividades.lista.id);
     }
