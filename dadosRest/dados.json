@@ -1,43 +1,5 @@
 {
-  "quadros": [
-    {
-      "id": 1,
-      "nome": "aa"
-    },
-    {
-      "id": 2,
-      "nome": "aaa"
-    }
-  ],
-  "listas": [
-    {
-      "id": 3,
-      "nome": "aaa",
-      "quadroId": "1"
-    },
-    {
-      "id": 4,
-      "nome": "Fazer",
-      "quadroId": 2
-    },
-    {
-      "id": 5,
-      "nome": "Fazendo",
-      "quadroId": 2
-    },
-    {
-      "id": 6,
-      "nome": "Feito",
-      "quadroId": 2
-    }
-  ],
-  "atividades": [
-    {
-      "id": 1,
-      "titulo": "aa",
-      "descricao": null,
-      "quadroId": 1,
-      "listaId": 3
-    }
-  ]
+  "quadros": [],
+  "listas": [],
+  "atividades": []
 }
