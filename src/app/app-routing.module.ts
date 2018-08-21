@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { QuadrosComponent } from './modulos/quadro/componentes/quadros/quadros.component';
-import { QuadroDetalheComponent } from './modulos/quadro/componentes/quadro-detalhe/quadro-detalhe.component';
-import { SobreComponent } from './modulos/sobre/componentes/sobre/sobre.component';
-
+/*
+usando roteamento lazy loading
+*/
 const routes: Routes = [
-  { path: '', component: QuadrosComponent },
-  { path: 'quadro-detalhe/:id', component: QuadroDetalheComponent },
-  { path: 'sobre', component: SobreComponent }
+  { path: '', loadChildren: './modulos/quadro/quadro.module#QuadroModule' },
+  { path: 'sobre', loadChildren: './modulos/sobre/sobre.module#SobreModule' }
 ];
 
 @NgModule({
