@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, Renderer2, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cabecalho',
@@ -17,10 +17,16 @@ export class CabecalhoComponent {
   verifica se menu encontra-se aberto, caso nao esteja o menu é aberto
   */
   abrirMenu() {
-    if (this.menu.nativeElement.classList.contains('responsivo')) {
-      this.renderizacao.removeClass(this.menu.nativeElement, 'responsivo');
-    } else {
+    if (this.fecharMenu()) {
       this.renderizacao.addClass(this.menu.nativeElement, 'responsivo');
     }
+  }
+
+  fecharMenu(): boolean {
+    if (this.menu.nativeElement.classList.contains('responsivo')) {
+      this.renderizacao.removeClass(this.menu.nativeElement, 'responsivo');
+      return false;
+    }
+    return true;
   }
 }

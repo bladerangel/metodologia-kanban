@@ -53,7 +53,11 @@ export class ConfirmacaoModalComponent implements OnInit, OnDestroy {
   avisa qualquer componente sobre a opcao selecionada
   */
   deletar() {
-    this.eventoEscolherOpcao.emit({ listaComAtividades: this.dados, modo: 'deletar' });
+    this.eventoEscolherOpcao.emit(
+      {
+        listaComAtividades: this.dados,
+        modo: 'deletar'
+      });
     this.fecharModal();
   }
 
@@ -62,11 +66,12 @@ export class ConfirmacaoModalComponent implements OnInit, OnDestroy {
   */
   mover() {
     if (this.listaComAtividadesSelecionada) {
-      this.eventoEscolherOpcao.emit({
-        listaComAtividades: this.dados,
-        listaComAtividadesSelecionada: this.listaComAtividadesSelecionada,
-        modo: 'mover'
-      });
+      this.eventoEscolherOpcao.emit(
+        {
+          listaComAtividades: this.dados,
+          listaComAtividadesSelecionada: this.listaComAtividadesSelecionada,
+          modo: 'mover'
+        });
       this.fecharModal();
     }
   }

@@ -1,8 +1,12 @@
 <div class="menu" #menu>
-  <a [routerLink]="['/']" (click)="abrirMenu()" routerLinkActive="item-ativo" [routerLinkActiveOptions]="{exact: true}">Quadros</a>
-  <span class="texto-centralizado">Metodologia Kanban</span>
-  <a [routerLink]="['/sobre']" (click)="abrirMenu()" routerLinkActive="item-ativo" [routerLinkActiveOptions]="{exact: true}">Sobre</a>
-  <a class="icon" (click)="abrirMenu()">
+
+  <a [routerLink]="['/']" (click)="fecharMenu()" routerLinkActive="item-ativo" [routerLinkActiveOptions]="{exact: true}">Quadros</a>
+
+  <a [routerLink]="['/sobre']" (click)="fecharMenu()" routerLinkActive="item-ativo" [routerLinkActiveOptions]="{exact: true}">Sobre</a>
+
+  <a class="icone" (click)="abrirMenu()">
     <i class="fa fa-bars"></i>
   </a>
+
+  <span class="texto-centralizado">Metodologia Kanban</span>
 </div>

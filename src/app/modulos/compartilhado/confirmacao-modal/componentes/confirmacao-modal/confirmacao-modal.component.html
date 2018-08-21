@@ -12,8 +12,10 @@
       <select class="formulario-input" name="nomeLista" [(ngModel)]="listaComAtividadesSelecionada">
         <option *ngFor="let listaComAtividades of listasComAtividadesExibidas" [ngValue]="listaComAtividades">{{listaComAtividades.lista.nome}}</option>
       </select>
+
       <button (click)="mover()" class="botao verde">Mover</button>
       <button (click)="deletar()" class="botao vermelho">Deletar</button>
+
     </div>
 
     <div class="modal-rodape">
