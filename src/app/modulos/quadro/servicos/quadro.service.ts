@@ -19,6 +19,10 @@ export class QuadroService {
     return this.httpClient.get<Quadro[]>(this.url);
   }
 
+  getListasEAtividades(quadroId: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.url + quadroId + '/listas?_embed=atividades');
+  }
+
   salvarQuadro(quadro: Quadro): Observable<Quadro> {
     return this.httpClient.post<Quadro>(this.url, quadro);
   }

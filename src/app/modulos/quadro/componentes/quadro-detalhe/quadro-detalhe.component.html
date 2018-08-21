@@ -1,6 +1,11 @@
 <div class="conteudo">
 
-    <app-lista *ngFor="let listaComAtividades of listasComAtividades" [listaComAtividades]="listaComAtividades" (eventoMoverAtividade)="moverAtividade($event)" (eventoRemoverLista)="removerLista($event)"></app-lista>
+    <app-lista 
+    *ngFor="let listaComAtividades of listasComAtividades" 
+    [listaComAtividades]="listaComAtividades" 
+    (eventoMoverAtividade)="moverAtividade($event)" 
+    (eventoRemoverLista)="removerLista($event)">
+    </app-lista>
 
     <div class="colunas">
         <ul class="lista">
@@ -9,13 +14,17 @@
                     <i class="fa fa-plus"></i>Adicionar Lista
                 </button>
             </li>
-
         </ul>
     </div>
 </div>
 
-<app-caixa-modal (eventoSubmeterFormulario)="gerenciarListas($event)"></app-caixa-modal>
+<app-caixa-modal 
+(eventoSubmeterFormulario)="gerenciarListas($event)">
+</app-caixa-modal>
 
-<app-confirmacao-modal (eventoEscolherOpcao)="escolherOpcao($event)" [listasComAtividades]="listasComAtividades"></app-confirmacao-modal>
+<app-confirmacao-modal 
+(eventoEscolherOpcao)="escolherOpcao($event)" 
+[listasComAtividades]="listasComAtividades">
+</app-confirmacao-modal>
 
 <app-caixa-toast></app-caixa-toast>

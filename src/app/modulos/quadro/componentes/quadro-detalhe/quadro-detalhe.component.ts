@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { QuadroService } from '../../servicos/quadro.service';
 import { ListaService } from '../../../lista/servicos/lista.service';
 import { AtividadeService } from '../../../atividade/servicos/atividade.service';
 import { CaixaModalService } from '../../../compartilhado/caixa-modal/servicos/caixaModal.service';
@@ -17,6 +18,7 @@ export class QuadroDetalheComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private quadroService: QuadroService,
     private listaService: ListaService,
     private atividadeService: AtividadeService,
     private caixaModalService: CaixaModalService
@@ -27,19 +29,23 @@ export class QuadroDetalheComponent implements OnInit {
 
   /*
   carrega todos as listas com suas atividades do quadro dependendo do seu id
+  faz cast das listas com atividades
   */
   ngOnInit() {
     this.quadroId = this.activatedRoute.snapshot.params['id'];
-    this.atividadeService.getTodasAtividades(this.quadroId)
+    this.quadroService.getListasEAtividades(this.quadroId)
       .subscribe(listasComAtividades => {
         this.listasComAtividades = listasComAtividades
           .map(dados => {
-            const objeto = { lista: dados, atividades: dados.atividades };
+            const objeto =
+            {
+              lista: dados,
+              atividades: dados.atividades
+            };
             delete objeto.lista.atividades;
             return objeto;
           });
-      }
-      );
+      });
   }
 
   /*
@@ -52,7 +58,7 @@ export class QuadroDetalheComponent implements OnInit {
 
   /*
   inseri lista sem precisar atualizar todas as listas
-  ao salvar um lista cria-se as atividades vazias
+  inseri atividades numa determinada lista sem precisar atualizar todas as atividades
   */
   gerenciarListas(dados: any) {
     if (dados.modo === 'criacao') {
@@ -65,9 +71,13 @@ export class QuadroDetalheComponent implements OnInit {
           });
       } else {
         this.listaService.salvarLista(new Lista(null, dados.formulario.nome, this.quadroId))
-        .subscribe((lista) => {
-          this.listasComAtividades.push({ lista: lista, atividades: [] });
-        });
+          .subscribe((lista) => {
+            this.listasComAtividades.push(
+              {
+                lista: lista,
+                atividades: []
+              });
+          });
       }
     }
   }
@@ -93,7 +103,12 @@ export class QuadroDetalheComponent implements OnInit {
   invoca evento para abrir modal
   */
   adicionarLista() {
-    this.caixaModalService.emitirEvento({ modo: 'criacao', componente: 'lista', formulario: {} });
+    this.caixaModalService.emitirEvento(
+      {
+        modo: 'criacao',
+        componente: 'lista',
+        formulario: {}
+      });
   }
 
   /*

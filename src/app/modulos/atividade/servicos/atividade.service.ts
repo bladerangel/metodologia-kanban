@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Atividade } from '../modelos/atividade';
-import { ListaComAtividades } from '../../lista/modelos/listaComAtividades';
 
 @Injectable({
   providedIn: 'root'
@@ -13,21 +12,18 @@ export class AtividadeService {
     private httpClient: HttpClient
   ) { }
 
-  url = 'http://localhost:3000/';
+  url = 'http://localhost:3000/atividades/';
 
   salvarAtividade(atividade: Atividade) {
-    return this.httpClient.post<Atividade>(this.url + 'atividades', atividade);
-  }
-
-  getTodasAtividades(quadroId: number) {
-    return this.httpClient.get<any>(this.url + 'quadros/' + quadroId + '/listas?_embed=atividades');
-  }
-
-  removerAtividade(atividadeId: number) {
-    return this.httpClient.delete(this.url + 'atividades/' + atividadeId);
+    return this.httpClient.post<Atividade>(this.url, atividade);
   }
 
   moverAtividade(atividade: Atividade) {
-    return this.httpClient.put<Atividade>(this.url + 'atividades/' + atividade.id, atividade);
+    return this.httpClient.put<Atividade>(this.url + atividade.id, atividade);
   }
+
+  removerAtividade(atividadeId: number) {
+    return this.httpClient.delete(this.url + atividadeId);
+  }
+
 }
