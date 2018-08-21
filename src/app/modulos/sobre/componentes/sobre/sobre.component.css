@@ -1,0 +1,40 @@
+h2 {
+    text-align: center;
+}
+
+.cartao {
+    max-width: 300px;
+    margin: auto;
+    padding: 0;
+}
+
+.titulo {
+    color: grey;
+    font-size: 18px;
+}
+
+.botao {
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    font-size: 18px;
+}
+
+img {
+    width: 80%
+}
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+    margin: 5px;
+}
+
+div {
+    margin: 24px 0;
+}
+
+.botao:hover, .botao:hover {
+    opacity: 0.7;
+}
