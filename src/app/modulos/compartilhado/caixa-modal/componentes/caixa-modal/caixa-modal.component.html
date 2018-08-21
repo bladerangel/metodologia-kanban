@@ -6,11 +6,11 @@
     </div>
 
     <div class="conteudo">
-      <label for="nome"><b>Nome Quadro:</b></label>
+      <label for="nome"><b>Nome {{dados?.componente}}:</b></label>
       <input type="text" placeholder="Digite nome:" name="nome" formControlName="nome" required>
 
       <div *ngIf="this.formulario.get('descricao')">
-        <label for="descricao"><b>Descricao Atividade:</b></label>
+        <label for="descricao"><b>Descricao {{dados?.componente}}:</b></label>
         <textarea rows="4" placeholder="Digite descricao:" name="descricao" formControlName="descricao"></textarea>
       </div>
       <button class="botao verde" [disabled]="!formulario.valid" type="submit">Criar Quadro</button>

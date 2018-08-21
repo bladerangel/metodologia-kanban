@@ -13,7 +13,8 @@ export class CaixaModalComponent implements OnInit, OnDestroy {
   constructor(
     private render: Renderer2,
     private caixaModalService: CaixaModalService,
-    private contruirFormulario: FormBuilder) { }
+    private contruirFormulario: FormBuilder
+  ) { }
 
   @Output() eventoSubmeterFormulario = new EventEmitter<any>();
   @ViewChild('modal') modal: ElementRef;
@@ -53,10 +54,14 @@ export class CaixaModalComponent implements OnInit, OnDestroy {
   }
 
   /*
+  remove controle descricao caso o formulario tenha
   reseta valores do fomulario
   alterar o estilo do modal para ser fechado
   */
   fecharModal() {
+    if(this.formulario.get('descricao')){
+      this.formulario.removeControl('descricao');
+    }
     this.formulario.reset();
     this.render.setStyle(this.modal.nativeElement, 'display', 'none');
   }
