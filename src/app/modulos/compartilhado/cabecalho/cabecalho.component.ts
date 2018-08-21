@@ -17,18 +17,10 @@ export class CabecalhoComponent {
   verifica se menu encontra-se aberto, caso nao esteja o menu é aberto
   */
   abrirMenu() {
-    if (this.fecharMenu()) {
+    if (this.menu.nativeElement.classList.contains('responsivo')) {
+      this.renderizacao.removeClass(this.menu.nativeElement, 'responsivo');
+    } else {
       this.renderizacao.addClass(this.menu.nativeElement, 'responsivo');
     }
   }
-
-  fecharMenu(): boolean {
-    if (this.menu.nativeElement.classList.contains('responsivo')) {
-      this.renderizacao.removeClass(this.menu.nativeElement, 'responsivo');
-      return false;
-    }
-    return true;
-
-  }
-
 }
