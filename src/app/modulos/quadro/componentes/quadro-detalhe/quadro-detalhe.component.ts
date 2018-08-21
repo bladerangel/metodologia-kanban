@@ -26,7 +26,7 @@ export class QuadroDetalheComponent implements OnInit {
   listasComAtividades: ListaComAtividades[];
 
   /*
-  carrega todos as listas do quadro dependendo do seu id
+  carrega todos as listas com suas atividades do quadro dependendo do seu id
   */
   ngOnInit() {
     this.quadroId = this.activatedRoute.snapshot.params['id'];
@@ -64,10 +64,28 @@ export class QuadroDetalheComponent implements OnInit {
             lista.atividades.push(atividade);
           });
       } else {
-        this.listaService.salvarLista(new Lista(null, dados.formulario.nome, this.quadroId)).subscribe((lista) => {
+        this.listaService.salvarLista(new Lista(null, dados.formulario.nome, this.quadroId))
+        .subscribe((lista) => {
           this.listasComAtividades.push({ lista: lista, atividades: [] });
         });
       }
+    }
+  }
+
+  /*
+  remove lista sem precisar atualizar todas as listas
+  remove lista antiga e move todas as atividades para nova lista sem precisar atualizar todas as listas
+  */
+  escolherOpcao(dados: any) {
+    if (dados.modo === 'deletar') {
+      this.removerLista(dados.listaComAtividades.lista.id);
+    } else {
+      dados.listaComAtividades.atividades.forEach(atividade => {
+        atividade.listaId = dados.listaComAtividadesSelecionada.lista.id;
+        dados.listaComAtividadesSelecionada.atividades.push(atividade);
+        this.atividadeService.moverAtividade(atividade).subscribe();
+      });
+      this.removerLista(dados.listaComAtividades.lista.id);
     }
   }
 

@@ -3,6 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AtividadeService } from '../../../atividade/servicos/atividade.service';
 import { CaixaModalService } from '../../../compartilhado/caixa-modal/servicos/caixaModal.service';
 import { ListaComAtividades } from '../../modelos/listaComAtividades';
+import { ConfirmacaoModalService } from '../../../compartilhado/confirmacao-modal/servicos/confirmacao-modal.service';
 
 @Component({
   selector: 'app-lista',
@@ -13,7 +14,8 @@ export class ListaComponent {
 
   constructor(
     private atividadeService: AtividadeService,
-    private caixaModalService: CaixaModalService
+    private caixaModalService: CaixaModalService,
+    private confirmacaoModalService: ConfirmacaoModalService
   ) { }
 
   @Input() listaComAtividades: ListaComAtividades;
@@ -55,10 +57,14 @@ export class ListaComponent {
   }
 
   /*
-  avisa ao componente quadro-detalhe que foi removida a lista
+  avisa componente quadro-detalhe para remove lista
+  invoca evento para abrir modal de confirmacao
   */
   removerLista() {
-    this.eventoRemoverLista.emit(this.listaComAtividades.lista.id);
+    if (this.listaComAtividades.atividades.length === 0) {
+      this.eventoRemoverLista.emit(this.listaComAtividades.lista.id);
+    } else {
+      this.confirmacaoModalService.emitirEvento(this.listaComAtividades);
+    }
   }
-
 }
