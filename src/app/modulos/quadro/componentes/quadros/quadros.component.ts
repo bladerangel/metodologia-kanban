@@ -46,9 +46,8 @@ export class QuadrosComponent implements OnInit {
       this.quadroService.salvarQuadro(new Quadro(null, dados.formulario.nome))
         .subscribe(quadro => {
           this.quadros.push(quadro);
-          for (const lista in Object.values(ListaObrigatoria)) {
-            this.listaService.salvarLista(new Lista(null, lista, quadro.id)).subscribe();
-          }
+          Object.values(ListaObrigatoria).forEach(lista =>
+            this.listaService.salvarLista(new Lista(null, lista, quadro.id)).subscribe());
         });
     } else {
       this.quadroService.renomearQuadro(dados.formulario).subscribe();
