@@ -67,7 +67,7 @@ export class CaixaModalComponent implements OnInit, OnDestroy {
   }
 
   /*
-  avisa o componente qualquer sobre o envia dos dados preenchidos
+  avisa qualquer componente sobre o envia dos dados preenchidos
   */
   submeterFormulario() {
     this.dados.formulario.nome = this.formulario.value.nome;
