@@ -1,5 +1,5 @@
 export class Quadro {
-    
+
     /*
     id gerando automaticamente pelo rest-api
     */

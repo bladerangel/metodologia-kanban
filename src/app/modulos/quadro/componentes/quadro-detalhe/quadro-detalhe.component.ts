@@ -37,8 +37,7 @@ export class QuadroDetalheComponent implements OnInit {
       .subscribe(listasComAtividades => {
         this.listasComAtividades = listasComAtividades
           .map(dados => {
-            const objeto =
-            {
+            const objeto = {
               lista: dados,
               atividades: dados.atividades
             };
