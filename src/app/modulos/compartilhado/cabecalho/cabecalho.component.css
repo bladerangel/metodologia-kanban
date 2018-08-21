@@ -41,10 +41,11 @@
 }
 
 .texto-centralizado {
+  text-align: center;
   float: none;
   position: absolute;
   top: 20%;
-  left: 40%;
+  left: 43%;
   color: white;
   font-size: 21px;
 }

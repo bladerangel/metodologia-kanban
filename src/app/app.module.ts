@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { QuadrosComponent } from './modulos/quadro/componentes/quadros/quadros.component';
 import { QuadroComponent } from './modulos/quadro/componentes/quadro/quadro.component';
@@ -16,6 +17,8 @@ import { CaixaModalComponent } from './modulos/compartilhado/caixa-modal/compone
 import { CabecalhoComponent } from './modulos/compartilhado/cabecalho/cabecalho.component';
 import { CaixaToastComponent } from './modulos/compartilhado/caixa-toast/componentes/caixa-toast/caixa-toast.component';
 import { ConfirmacaoModalComponent } from './modulos/compartilhado/confirmacao-modal/componentes/confirmacao-modal/confirmacao-modal.component';
+import { SobreComponent } from './modulos/sobre/componentes/sobre/sobre.component';
+
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { ConfirmacaoModalComponent } from './modulos/compartilhado/confirmacao-m
     ListaComponent,
     AtividadeComponent,
     CaixaToastComponent,
-    ConfirmacaoModalComponent
+    ConfirmacaoModalComponent,
+    SobreComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { ConfirmacaoModalComponent } from './modulos/compartilhado/confirmacao-m
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgDragDropModule.forRoot()
+    NgDragDropModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,14 +7,9 @@
   ],
   "listas": [
     {
-      "id": 1,
-      "nome": "Fazer",
-      "quadroId": 1
-    },
-    {
-      "id": 2,
-      "nome": "Fazendo",
-      "quadroId": 1
+      "id": 3,
+      "nome": "aaa",
+      "quadroId": "1"
     }
   ],
   "atividades": [
@@ -23,7 +18,7 @@
       "titulo": "aa",
       "descricao": null,
       "quadroId": 1,
-      "listaId": 2
+      "listaId": 3
     }
   ]
 }
