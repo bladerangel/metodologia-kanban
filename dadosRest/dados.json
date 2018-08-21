@@ -1,53 +1,5 @@
 {
-  "quadros": [
-    {
-      "id": 2,
-      "nome": "gg"
-    },
-    {
-      "id": 5,
-      "nome": "fff"
-    }
-  ],
-  "listas": [
-    {
-      "id": 5,
-      "nome": "Fazer",
-      "quadroId": 2
-    },
-    {
-      "id": 6,
-      "nome": "Fazendo",
-      "quadroId": 2
-    },
-    {
-      "id": 7,
-      "nome": "Feito",
-      "quadroId": 2
-    },
-    {
-      "id": 14,
-      "nome": "Fazer",
-      "quadroId": 5
-    },
-    {
-      "id": 15,
-      "nome": "Fazendo",
-      "quadroId": 5
-    },
-    {
-      "id": 16,
-      "nome": "Feito",
-      "quadroId": 5
-    }
-  ],
-  "atividades": [
-    {
-      "id": 1,
-      "titulo": "tes",
-      "descricao": "tee",
-      "quadroId": 2,
-      "listaId": 5
-    }
-  ]
+  "quadros": [],
+  "listas": [],
+  "atividades": []
 }
