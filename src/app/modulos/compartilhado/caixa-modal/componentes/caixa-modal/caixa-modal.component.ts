@@ -59,7 +59,7 @@ export class CaixaModalComponent implements OnInit, OnDestroy {
   alterar o estilo do modal para ser fechado
   */
   fecharModal() {
-    if(this.formulario.get('descricao')){
+    if (this.formulario.get('descricao')) {
       this.formulario.removeControl('descricao');
     }
     this.formulario.reset();

@@ -62,7 +62,11 @@ export class ConfirmacaoModalComponent implements OnInit, OnDestroy {
   */
   mover() {
     if (this.listaComAtividadesSelecionada) {
-      this.eventoEscolherOpcao.emit({ listaComAtividades: this.dados, listaComAtividadesSelecionada: this.listaComAtividadesSelecionada, modo: 'mover' });
+      this.eventoEscolherOpcao.emit({
+        listaComAtividades: this.dados,
+        listaComAtividadesSelecionada: this.listaComAtividadesSelecionada,
+        modo: 'mover'
+      });
       this.fecharModal();
     }
   }
