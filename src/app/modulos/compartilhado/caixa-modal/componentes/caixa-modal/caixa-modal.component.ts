@@ -30,7 +30,6 @@ export class CaixaModalComponent implements OnInit, OnDestroy {
     });
     this.caixaModalService.escutarEvento((dados) => {
       this.dados = dados;
-      console.log('aki', dados);
       if (this.dados.componente === 'atividade') {
         this.formulario.addControl('descricao', new FormControl());
         if (this.dados.modo === 'edicao') {
@@ -75,8 +74,8 @@ export class CaixaModalComponent implements OnInit, OnDestroy {
   }
 
   /*
- remove evento ao sair do componente
- */
+  remove evento ao sair do componente
+  */
   ngOnDestroy() {
     this.caixaModalService.removerEvento();
   }
