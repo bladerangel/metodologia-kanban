@@ -2,8 +2,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { AtividadeService } from '../../../atividade/servicos/atividade.service';
 import { CaixaModalService } from '../../../compartilhado/caixa-modal/servicos/caixaModal.service';
-import { ListaComAtividades } from '../../modelos/listaComAtividades';
 import { ConfirmacaoModalService } from '../../../compartilhado/confirmacao-modal/servicos/confirmacao-modal.service';
+import { ListaComAtividades } from '../../modelos/listaComAtividades';
 
 @Component({
   selector: 'app-lista',
@@ -27,7 +27,11 @@ export class ListaComponent {
   avisa ao componente quadro-detalhe que foi movida a atividade
   */
   moverAtividade(evento: any) {
-    this.eventoMoverAtividade.emit({ listaId: evento.dragData.listaId, atividadeId: evento.dragData.id });
+    this.eventoMoverAtividade.emit(
+      {
+        listaId: evento.dragData.listaId,
+        atividadeId: evento.dragData.id
+      });
     evento.dragData.listaId = this.listaComAtividades.lista.id;
     this.listaComAtividades.atividades.push(evento.dragData);
     this.atividadeService.moverAtividade(evento.dragData).subscribe();
@@ -44,9 +48,14 @@ export class ListaComponent {
   invoca evento para abrir modal
   */
   adicionarAtividade() {
-    this.caixaModalService.emitirEvento({ modo: 'criacao', componente: 'atividade', lista: this.listaComAtividades.lista, formulario: {} });
+    this.caixaModalService.emitirEvento(
+      {
+        modo: 'criacao',
+        componente: 'atividade',
+        lista: this.listaComAtividades.lista,
+        formulario: {}
+      });
   }
-
 
   /*
   remove atividade sem precisar atualizar todas as atividades
