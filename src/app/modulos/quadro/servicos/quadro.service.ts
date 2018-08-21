@@ -23,7 +23,7 @@ export class QuadroService {
     return this.httpClient.post<Quadro>(this.url, quadro);
   }
 
-  renomearQuadro(quadro: Quadro): Observable<Quadro> {
+  atualizarQuadro(quadro: Quadro): Observable<Quadro> {
     return this.httpClient.put<Quadro>(this.url + quadro.id, quadro);
   }
 
