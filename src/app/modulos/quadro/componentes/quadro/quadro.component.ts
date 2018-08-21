@@ -15,21 +15,25 @@ export class QuadroComponent {
   ) { }
 
   @Input() quadro: Quadro;
-  @Output() eventoRemoverQuadro = new EventEmitter();
+  @Output() eventoRemoverQuadro = new EventEmitter<number>();
 
   /*
   avisa ao componente quadros que foi removido o quadro
   */
   removerQuadro() {
     this.eventoRemoverQuadro.emit(this.quadro.id);
-
   }
 
   /*
   invoca evento para abrir modal
   */
   editarQuadro() {
-    this.caixaModalService.emitirEvento({ modo: 'edicao', componente: 'quadro', formulario: this.quadro });
+    this.caixaModalService.emitirEvento(
+      {
+        modo: 'edicao',
+        componente: 'quadro',
+        formulario: this.quadro
+      });
   }
 
 }
